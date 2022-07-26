@@ -53,7 +53,7 @@ body {
 }
 
 .profile {
-    width: 20vw;
+    width: 256px;
     margin: 0 auto;
     display: block;
     border: double 5px transparent;
