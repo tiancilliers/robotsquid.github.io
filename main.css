@@ -3,7 +3,7 @@ body {
 }
 
 #splash {
-    background-color: #392559;
+    background-color: #372456;
     width: 100vw;
     height: 100vh;
 }
@@ -12,12 +12,13 @@ body {
     position: absolute;
     top: 32%;
     left: 50%;
-    transform: translate(-50%, -7.5em);
+    width: 100%;
+    transform: translate(-50%, max(-7.5em, max(-20vh, -20vw)));
 }
 
 #splash .splash-buttons {
     position: absolute;
-    bottom: 1.5em;
+    bottom: -0.5em;
     left: 0;
     width: 100%;
     display: flex;
@@ -28,14 +29,14 @@ body {
 }
 
 #splash h1 {
-    color: #FF8282;
+    color: #FF7070;
     font-family: 'Gothic A1', sans-serif;
-    letter-spacing: 0.075rem;
-    font-size: 2.5em;
+    letter-spacing: 0.075em;
+    font-size: min(3em, min(6vw, 6vh));
     line-height: 1.75;
     font-weight: 400;
     text-align: center;
-    text-shadow: .150rem .150rem #392559, -.150rem .150rem #392559, .150rem -.150rem #392559, -.150rem -.150rem #392559, 0 -.150rem #392559, 0 .150rem #392559;
+    text-shadow: .050em .050em #372456, -.050em .050em #372456, .050em -.050em #392559, -.050em -.050em #392559, 0 -.050em #372456, 0 .050em #372456;
 }
 
 #splash canvas {
@@ -44,49 +45,55 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    filter: blur(.15rem);
+    filter: blur(.25em);
 }
 
 #splash .profile-name {
     position: relative;
-    left: -.150rem;
-    top: -.150rem;
-    color: #392559;
-    text-shadow: .150rem .150rem #01F0FF, .300rem .300rem #FF8282;
+    left: -.050em;
+    top: -.050em;
+    color: #372456;
+    text-shadow: .050em .050em #0AEFFF, .100em .100em #FF7070;
     font-weight: 900;
     font-size: 1.08em;
 }
 
 .profile-img {
-    width: 15em;
+    width: min(15em, min(40vh, 40vw));
     margin: 0 auto;
     display: block;
-    border: solid 0.5em #FF8282;
+    border: solid 0.5em #FF7070;
     border-radius: 50%;
 }
 
+.splash-button {
+    width: 1.7em;
+    height: 1.7em;
+    background-color: #FF7070;
+    border-radius: 50%;
+    border: solid 0.4em #372456;
+    padding: .5em;
+    margin: 0 .25em;
+    transition: background-color 0.2s ease-out;
+}
+
 .button-logo {
+    height: 100%;
+    width: 100%;
+    text-align: center;
+}
+
+.splash-button:hover {
+    cursor: pointer;
+    position: relative;
+    background-color: #0AEFFF;
+}
+
+.button-logo2 {
     width: 2em;
     height: 2em;
     padding: 0 0.5em;
     transition: filter 0.2s ease-out;
+    background-color: #ff0000;
+    mask: url(img/youtube2.png);
 }
-
- .button-logo:hover {
-    cursor: pointer;
-    position: relative;
-    filter: drop-shadow(.150rem .150rem #01F0FF);
- }
-
- body > p {
-    /* align bottom middle */
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    width: 100vw;
-    text-align: center;
-    transform: translate(-50%, 0);
-    color: #ff828271;
-    font-size: 0.8em;
-    font-family: 'Gothic A1', sans-serif;
- }

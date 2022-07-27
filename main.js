@@ -11,6 +11,11 @@ onresize = function() {
     h = window.innerHeight;
     canvas.width = w;
     canvas.height = h;
+    if (w/h > 2.5) {
+        this.document.querySelector("br").style.display = "none";
+    } else {
+        this.document.querySelector("br").style.display = "block";
+    }
 }
 
 onresize();
@@ -78,7 +83,7 @@ function update() {
     ctx.clearRect(0, 0, w, h);
     for (var i = 0; i < lines.length; i++) {
         draw(lines[i]);
-        lines[i].len += lines[i].spd / 10;
+        lines[i].len += lines[i].spd / 25;
         if (Math.pow(lines[i].len, 2) > (w*w+h*h)/3) {
             lines[i].len = -40;
             lines[i].arg = Math.random() * Math.PI * 2;
@@ -87,13 +92,13 @@ function update() {
     }
 
     if (anim_stage == 0 || anim_stage == 2) {
-        curs.style.color = (anim_prog % 40) < 20 ? "#392559" : "#FF8282";
+        curs.style.opacity = (anim_prog % 40) < 20 ? 1 : 0;
         if (anim_prog > (anim_stage == 0 ? 120 : 30)) {
             anim_stage = (anim_stage+1)%4;
             anim_prog = 0;
         }
     } else {
-        curs.style.color = "#FF8282";
+        curs.style.opacity = 1;
     }
 
     if (anim_stage == 1 && anim_prog % 8 == 0) {
