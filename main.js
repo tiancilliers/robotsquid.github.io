@@ -1,4 +1,4 @@
-var canvas = document.querySelector("#splash canvas");
+var canvas = document.querySelector("canvas");
 var splash = document.querySelector("#splash");
 var desc = document.querySelector("h1 .profile-desc");
 var curs = document.querySelector("h1 .profile-curs");
@@ -81,6 +81,8 @@ var anim_stage = 0;
 
 function update() {
     ctx.clearRect(0, 0, w, h);
+    ctx.fillStyle = "rgba(55, 36, 86, 1.0)";
+    ctx.fillRect(0, 0, w, h);
     for (var i = 0; i < lines.length; i++) {
         draw(lines[i]);
         lines[i].len += lines[i].spd / 25;
