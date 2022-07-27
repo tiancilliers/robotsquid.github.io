@@ -1,7 +1,7 @@
 var canvas = document.querySelector("#splash canvas");
 var splash = document.querySelector("#splash");
-var desc = document.querySelector("h1 .desc");
-var curs = document.querySelector("h1 .curs");
+var desc = document.querySelector("h1 .profile-desc");
+var curs = document.querySelector("h1 .profile-curs");
 var ctx = canvas.getContext("2d");
 var w = window.innerWidth;
 var h = window.innerHeight;
@@ -33,7 +33,7 @@ var thingID = Math.random() * things.length | 0;
 var newID = thingID;
 desc.textContent = things[thingID]
 
-for (var i = 0; i < 50; i++) {
+for (var i = 0; i < 64; i++) {
     lines.push(new ray(Math.random() * Math.PI * 2, Math.random() * Math.sqrt(w*w+h*h)/2, Math.random() * 10 + 10));
 }
 
@@ -41,19 +41,31 @@ function ray(arg, len, spd) {
     this.arg = arg;
     this.len = len;
     this.spd = spd;
+    this.ox = Math.random()*4-2;
+    this.oy = Math.random()*4-2;
 }
 
 function draw(r) {
     var len2 = r.len < 0 ? r.len+40 : r.len * 1.5 + 40;
-    ctx.lineWidth = 2;
-    ctx.strokeStyle = `rgba(255, 130, 130, ${Math.max(0, Math.min(1, (r.len)/Math.min(w/4, h/4)))})`;
+    ctx.lineWidth = 7;
+    ctx.strokeStyle = `rgba(1, 240, 255, ${Math.max(0, Math.min(0.8, (r.len)/Math.min(w/4, h/4)))})`;
     ctx.beginPath();
     if (r.len > 0) {
-        ctx.moveTo(w/2 + r.len * Math.cos(r.arg), h/2 + r.len * Math.sin(r.arg));
+        ctx.moveTo(w/2 + r.len * Math.cos(r.arg)+r.ox, 0.32*h + r.len * Math.sin(r.arg)+r.oy);
+    } else {
+        ctx.moveTo(w/2+r.ox, h/2+r.oy);
+    }
+    ctx.lineTo(w/2 + len2 * Math.cos(r.arg)+r.ox, 0.32*h + len2 * Math.sin(r.arg)+r.oy);
+    ctx.stroke();
+    ctx.closePath();
+    ctx.strokeStyle = `rgba(255, 130, 130, ${Math.max(0, Math.min(0.8, (r.len)/Math.min(w/4, h/4)))})`;
+    ctx.beginPath();
+    if (r.len > 0) {
+        ctx.moveTo(w/2 + r.len * Math.cos(r.arg), 0.32*h + r.len * Math.sin(r.arg));
     } else {
         ctx.moveTo(w/2, h/2);
     }
-    ctx.lineTo(w/2 + len2 * Math.cos(r.arg), h/2 + len2 * Math.sin(r.arg));
+    ctx.lineTo(w/2 + len2 * Math.cos(r.arg), 0.32*h + len2 * Math.sin(r.arg));
     ctx.stroke();
     ctx.closePath();
 }
@@ -67,7 +79,7 @@ function update() {
     for (var i = 0; i < lines.length; i++) {
         draw(lines[i]);
         lines[i].len += lines[i].spd / 10;
-        if (Math.pow(lines[i].len, 2) > (w*w+h*h)/4) {
+        if (Math.pow(lines[i].len, 2) > (w*w+h*h)/3) {
             lines[i].len = -40;
             lines[i].arg = Math.random() * Math.PI * 2;
             lines[i].spd = Math.random() * 10 + 10;

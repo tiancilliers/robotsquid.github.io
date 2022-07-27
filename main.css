@@ -8,18 +8,23 @@ body {
     height: 100vh;
 }
 
-#splash > div {
+#splash .splash-profile {
     position: absolute;
-    top: 50%;
+    top: 32%;
     left: 50%;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, -7.5em);
 }
 
-#splash > div > div {
+#splash .splash-buttons {
+    position: absolute;
+    bottom: 1.5em;
+    left: 0;
+    width: 100%;
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
+    transform: translate(0%, -50%);
 }
 
 #splash h1 {
@@ -39,10 +44,10 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    filter: blur(.4rem);
+    filter: blur(.15rem);
 }
 
-#splash .name {
+#splash .profile-name {
     position: relative;
     left: -.150rem;
     top: -.150rem;
@@ -52,22 +57,22 @@ body {
     font-size: 1.08em;
 }
 
-.profile {
-    width: 200px;
+.profile-img {
+    width: 15em;
     margin: 0 auto;
     display: block;
-    border: solid 5px #FF8282;
+    border: solid 0.5em #FF8282;
     border-radius: 50%;
 }
 
-.logo {
-    width: 32px;
-    height: 32px;
-    padding: 0 10px;
+.button-logo {
+    width: 2em;
+    height: 2em;
+    padding: 0 0.5em;
     transition: filter 0.2s ease-out;
 }
 
- .logo:hover {
+ .button-logo:hover {
     cursor: pointer;
     position: relative;
     filter: drop-shadow(.150rem .150rem #01F0FF);
